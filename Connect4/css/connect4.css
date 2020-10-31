@@ -1,0 +1,18 @@
+#connect4_board TD {
+    width: 4em;
+    height: 4em;
+    border: 2px solid black;
+    text-align: center;
+}
+
+#gamepad {
+    display: none;
+}
+
+button {
+    margin: 2px;
+}
+
+select {
+    margin: 2px;
+}
