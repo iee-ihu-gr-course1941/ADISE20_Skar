@@ -1,5 +1,4 @@
 var me = { token: null, pawn_color: null };
-var me1 = { token: null, pawn_color: null };
 var game_status = {};
 var board = {};
 var last_update = new Date().getTime();
@@ -51,37 +50,15 @@ function login_to_game() {
 }
 
 function login_success(data) {
-    check_num_players();
-}
-
-function check_num_players() {
-    $.ajax({
-        url: "connect4.php/players/check/",
-        method: 'GET',
-        headers: { "X-Token": me.token },
-        dataType: "json",
-        success: go_login,
-
-    });
-
-}
-
-function go_login(data) {
-    me = data[0];
-    me1 = data[1];
-    if (data[1] != null) {
-        $('#game_initializer').hide(2000);
-        $('#gamepad').show(2000);
-
-    }
+    me = data[0]
+    $('#game_initializer').hide(2000);
     update_player_info();
 
 }
 
+
 function update_player_info() {
     $('#p1').html("Nickname: " + me.nickname + "<br> Χρώμα: " + me.pawn_color);
-    $('#p2').html("Nickname: " + me1.nickname + "<br> Χρώμα: " + me1.pawn_color);
-
 }
 
 

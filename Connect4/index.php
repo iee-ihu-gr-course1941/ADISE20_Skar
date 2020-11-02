@@ -36,27 +36,14 @@
             </div>
             <br>
             <div class="row justify-content-center">
-
-            </div>
-            <div class="row justify-content-center">
-                <div class="col-sm">
-                    <div id='game_info1' class="card mt-2">
-                        <div class="card-body">
-                            <p>Player1</p><br>
-                            <p id="p1"></p><br>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-sm">
-                    <div id='game_initializer'>
-                        <div class="d-flex justify-content-center">
-                            <input id='nickname_input'>
-                            <select id='pawn_color'>
-                                <option value='R'>R</option>
-                                <option value='Y'>Y</option>
-                            </select>
-                            <button id='login_btn' class='btn btn-outline-danger'>ΕΙΣΟΔΟΣ</button><br>
-                        </div>
+                <div id='game_initializer'>
+                    <div class="d-flex justify-content-center">
+                        <input id='nickname_input'>
+                        <select id='pawn_color'>
+                            <option value='R'>R</option>
+                            <option value='Y'>Y</option>
+                        </select>
+                        <button id='login_btn' class='btn btn-outline-danger'>ΕΙΣΟΔΟΣ</button><br>
                     </div>
                     <div id="gamepad">
                         <div class="d-flex justify-content-center">
@@ -75,17 +62,15 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-sm">
-                    <div id='game_info2' class="card mt-2">
-                        <div class="card-body">
-                            <p>Player2</p><br>
-                            <p id="p2"></p><br>
-                        </div>
+            </div>
+            <div class="row justify-content-center">
+                <div id='game_info1' class="card mt-2">
+                    <div class="card-body">
+                        <p>Player</p><br>
+                        <p id="p1"></p><br>
                     </div>
                 </div>
             </div>
-
-
         </div>
     </div>
 </body>
