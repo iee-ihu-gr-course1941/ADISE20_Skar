@@ -10,6 +10,7 @@ $(function() {
 
     $('#login_btn').click(login_to_game);
     $('#play_btn').click(do_move);
+    $('#reset_btn').click(reset_game);
 
 })
 
@@ -53,6 +54,7 @@ function login_success(data) {
     me = data[0]
     $('#game_initializer').hide(2000);
     update_player_info();
+    update_game_status();
 
 }
 
@@ -65,6 +67,27 @@ function update_player_info() {
 function login_error(data) {
     var x = data.responseJSON;
     alert(x.errormesg);
+}
+
+function update_game_status() {
+
+}
+
+
+function reset_game() {
+
+    $.ajax({
+        url: "connect4.php/board/reset/",
+        method: 'POST',
+        headers: { "X-Token": me.token },
+        success: draw_the_board
+    });
+
+
+    $('#game_initializer').show(2000);
+    $('#nickname_input').val("");
+    $('#p1').empty();
+    me = {};
 }
 
 

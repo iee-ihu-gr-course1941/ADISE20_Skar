@@ -58,7 +58,6 @@
                                 <option value="7">Στήλη 7</option>
                             </select>
                             <button id="play_btn" class="btn btn-outline-danger">ΠΑΙΞΕ</button>
-                            <button id="reset_btn" class="btn btn-outline-danger">ΕΠΑΝΑΦΟΡΑ</button>
                         </div>
                     </div>
                 </div>
@@ -67,9 +66,12 @@
                 <div id='game_info1' class="card mt-2">
                     <div class="card-body">
                         <p>Player</p><br>
-                        <p id="p1"></p><br>
+                        <p id="p1"></p><br><br>
                     </div>
                 </div>
+            </div>
+            <div class="row justify-content-center">
+                <button id="reset_btn" class="btn btn-outline-danger">ΕΠΑΝΑΦΟΡΑ</button>
             </div>
         </div>
     </div>

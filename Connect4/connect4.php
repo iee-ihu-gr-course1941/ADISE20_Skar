@@ -23,6 +23,13 @@ switch ($r = array_shift($request)) {
                 break;
         }
         break;
+    case 'board':
+        switch ($r = array_shift($request)) {
+            case 'reset':
+                manage_board($method);
+                break;
+        }
+        break;
     default:
         header("HTTP/1.1 404 Not Found");
         print json_encode(['errormsg' => "Switch problem."]);
@@ -35,6 +42,11 @@ function manage_player($method, $input)
 }
 
 
-function check_players(){
+function check_players()
+{
     show_players();
+}
+
+function manage_board($method){
+    reset_board();
 }

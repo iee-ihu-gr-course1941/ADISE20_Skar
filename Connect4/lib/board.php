@@ -8,4 +8,13 @@ function read_board() {
 	$res = $st->get_result();
 	return($res->fetch_all(MYSQLI_ASSOC));
 }
+
+function reset_board(){
+	global $mysqli;
+	$sql = 'CALL `clear_game`()';
+	$mysqli->query($sql);
+}
+
+
+
 ?>
