@@ -116,9 +116,9 @@ function reset_game() {
 
 function do_move() {
 
-    $move = $('#col_move').val();
+    var $move = $('#col_move').val();
 
-    if ($play_col < 1 || $play_col > 7) {
+    if ($move < 1 || $move > 7) {
         alert('Δώσε έγκυρη στήλη');
         return;
     }
@@ -129,7 +129,7 @@ function do_move() {
         dataType: 'json',
         headers: { "X-Token": me.token },
         contentType: 'application/json',
-        data: JSON.stringify({ move: $move }),
+        data: JSON.stringify({ move: $move, pawn_color: me.pawn_color }),
         success: result_move,
         error: login_error
     });

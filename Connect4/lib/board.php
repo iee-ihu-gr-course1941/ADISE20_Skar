@@ -16,5 +16,15 @@ function reset_board(){
 }
 
 
+function do_move($input){
+	$col_num = $input['move'];
+	$pawn_color = $input['pawn_color'];
+	global $mysqli;
+	$sql = 'call `do_move`(?,?);';
+	$st = $mysqli->prepare($sql);
+	$st->bind_param('is',$col_num,$pawn_color );
+	$st->execute();
 
-?>
+	header('Content-type: application/json');
+	print json_encode(read_board(), JSON_PRETTY_PRINT);
+}

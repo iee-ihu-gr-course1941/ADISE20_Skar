@@ -23,7 +23,10 @@ switch ($r = array_shift($request)) {
     case 'board':
         switch ($r = array_shift($request)) {
             case 'reset':
-                manage_board($method);
+                reset_board();
+                break;
+            case 'move':
+                manage_board($method,$input);
                 break;
         }
         break;
@@ -41,7 +44,10 @@ function manage_player($method, $input)
     handle_player($method, $input);
 }
 
-function manage_board($method)
+function manage_board($method,$input)
 {
-    reset_board();
+    if($method=='PUT'){
+        do_move($input);
+    }
+    
 }
