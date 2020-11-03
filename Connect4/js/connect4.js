@@ -87,10 +87,10 @@ function update_status(data) {
     update_player_info();
     clearTimeout(timer);
     if (game_status.p_turn == me.pawn_color && me.pawn_color != null) {
-        $('#gamepad').show();
+        $('#gamepad').show(2000);
         timer = setTimeout(function() { update_game_status(); }, 10000);
     } else {
-        $('#gamepad').hide();
+        $('#gamepad').hide(2000);
         timer = setTimeout(function() { update_game_status(); }, 4000);
     }
 
@@ -115,5 +115,27 @@ function reset_game() {
 
 
 function do_move() {
+
+    $move = $('#col_move').val();
+
+    if ($play_col < 1 || $play_col > 7) {
+        alert('Δώσε έγκυρη στήλη');
+        return;
+    }
+
+    $.ajax({
+        url: "connect4.php/board/move/",
+        method: 'PUT',
+        dataType: 'json',
+        headers: { "X-Token": me.token },
+        contentType: 'application/json',
+        data: JSON.stringify({ move: $move }),
+        success: result_move,
+        error: login_error
+    });
+
+}
+
+function result_move() {
 
 }
