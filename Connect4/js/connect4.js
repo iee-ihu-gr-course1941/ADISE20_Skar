@@ -8,9 +8,12 @@ var timer = null;
 $(function() {
     draw_the_board();
 
+    $('#gamepad').hide();
     $('#login_btn').click(login_to_game);
     $('#play_btn').click(do_move);
     $('#reset_btn').click(reset_game);
+
+    update_game_status();
 
 })
 
@@ -60,7 +63,7 @@ function login_success(data) {
 
 
 function update_player_info() {
-    $('#p1').html("Nickname: " + me.nickname + "<br> Χρώμα: " + me.pawn_color);
+    $('#p1').html("Nickname: " + me.nickname + "<br> Χρώμα: " + me.pawn_color + "<br> Κατάσταση παιχνιδιού: " + game_status.status + "<br> Σειρά του παίκτη με χρώμα: " + game_status.p_turn);
 }
 
 
@@ -70,9 +73,28 @@ function login_error(data) {
 }
 
 function update_game_status() {
-
+    clearTimeout(timer);
+    $.ajax({
+        url: "connect4.php/status/",
+        headers: { "X-Token": me.token },
+        success: update_status
+    });
 }
 
+function update_status(data) {
+    var old_status = game_status;
+    game_status = data[0];
+    update_player_info();
+    clearTimeout(timer);
+    if (game_status.p_turn == me.pawn_color && me.pawn_color != null) {
+        $('#gamepad').show();
+        timer = setTimeout(function() { update_game_status(); }, 10000);
+    } else {
+        $('#gamepad').hide();
+        timer = setTimeout(function() { update_game_status(); }, 4000);
+    }
+
+}
 
 function reset_game() {
 

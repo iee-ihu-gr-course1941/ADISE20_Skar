@@ -3,12 +3,14 @@
 function show_players()
 {
     global $mysqli;
-    $sql = 'select nickname,pawn_color from players where nickname is not null';
+    $sql = 'select count(*) as p from players where nickname is not null';
     $st = $mysqli->prepare($sql);
     $st->execute();
     $res = $st->get_result();
-    header('Content-type: application/json');
-    print json_encode($res->fetch_all(MYSQLI_ASSOC), JSON_PRETTY_PRINT);
+    $players = $res->fetch_assoc()['p'];
+    return($players);
+    //header('Content-type: application/json');
+    //print json_encode($res->fetch_all(MYSQLI_ASSOC), JSON_PRETTY_PRINT);
 }
 
 function show_player($pawn_color)
@@ -58,11 +60,12 @@ function set_up_player($input)
         exit;
     }
 
-    $sql3 = 'update players set nickname=?, token=md5(CONCAT( ?, NOW())), last_change=NOW() where pawn_color=?';
+    $sql3 = 'update players set nickname=?, token=md5(CONCAT( ?, NOW())) where pawn_color=?';
     $st3 = $mysqli->prepare($sql3);
     $st3->bind_param('sss', $nickname, $nickname, $pawn_color);
     $st3->execute();
 
+    update_status();
     $sql4 = 'select * from players where pawn_color=?';
     $st4 = $mysqli->prepare($sql4);
     $st4->bind_param('s', $pawn_color);

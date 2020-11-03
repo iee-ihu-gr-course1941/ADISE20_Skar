@@ -18,9 +18,6 @@ switch ($r = array_shift($request)) {
             case '':
                 manage_player($method, $input);
                 break;
-            case 'check':
-                check_players();
-                break;
         }
         break;
     case 'board':
@@ -29,6 +26,9 @@ switch ($r = array_shift($request)) {
                 manage_board($method);
                 break;
         }
+        break;
+    case 'status':
+        show_status();
         break;
     default:
         header("HTTP/1.1 404 Not Found");
@@ -41,12 +41,7 @@ function manage_player($method, $input)
     handle_player($method, $input);
 }
 
-
-function check_players()
+function manage_board($method)
 {
-    show_players();
-}
-
-function manage_board($method){
     reset_board();
 }
