@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Φιλοξενητής: 127.0.0.1
--- Χρόνος δημιουργίας: 04 Νοε 2020 στις 00:13:17
+-- Χρόνος δημιουργίας: 04 Νοε 2020 στις 23:36:45
 -- Έκδοση διακομιστή: 10.4.11-MariaDB
 -- Έκδοση PHP: 7.4.3
 
@@ -32,19 +32,43 @@ CREATE DEFINER=`root`@`localhost` PROCEDURE `clear_game` ()  BEGIN
 		update `game_status` set `status`='not active', 				`p_turn`=null, `result`=null;
         END$$
 
-CREATE DEFINER=`root`@`localhost` PROCEDURE `do_move` (IN `col_num` INT, IN `color` TEXT)  BEGIN
-DECLARE t_p_color Char DEFAULT NULL;
-DECLARE x1 Int DEFAULT 6;
-
-find_null: WHILE t_p_color!=NULL DO
-SELECT pawn_color INTO t_p_color FROM `board` WHERE X=x1 AND Y=col_num;
-SET x1= x1-1;
-END WHILE find_null;
-if x1!=0 THEN
-UPDATE `board` SET pawn_color=color WHERE X=x1 AND Y=col_num;
-END IF;
- 
+CREATE DEFINER=`root`@`localhost` PROCEDURE `do_move` (IN `col_num` INT, IN `color` TEXT)  do_move:
+BEGIN
+if (SELECT pawn_color FROM `board` WHERE X=6 AND Y=col_num)IS NULL THEN
+UPDATE `board` SET pawn_color=color WHERE X=6 AND Y=col_num;
 UPDATE `game_status` SET p_turn=if(color='R','Y','R');
+LEAVE do_move;
+END IF;
+
+if (SELECT pawn_color FROM `board` WHERE X=5 AND Y=col_num)IS NULL THEN
+UPDATE `board` SET pawn_color=color WHERE X=5 AND Y=col_num;
+UPDATE `game_status` SET p_turn=if(color='R','Y','R');
+LEAVE do_move;
+END IF;
+
+if (SELECT pawn_color FROM `board` WHERE X=4 AND Y=col_num)IS NULL THEN
+UPDATE `board` SET pawn_color=color WHERE X=4 AND Y=col_num;
+UPDATE `game_status` SET p_turn=if(color='R','Y','R');
+LEAVE do_move;
+END IF;
+
+if (SELECT pawn_color FROM `board` WHERE X=3 AND Y=col_num)IS NULL THEN
+UPDATE `board` SET pawn_color=color WHERE X=3 AND Y=col_num;
+UPDATE `game_status` SET p_turn=if(color='R','Y','R');
+LEAVE do_move;
+END IF;
+
+if (SELECT pawn_color FROM `board` WHERE X=2 AND Y=col_num)IS NULL THEN
+UPDATE `board` SET pawn_color=color WHERE X=2 AND Y=col_num;
+UPDATE `game_status` SET p_turn=if(color='R','Y','R');
+LEAVE do_move;
+END IF;
+
+if (SELECT pawn_color FROM `board` WHERE X=1 AND Y=col_num)IS NULL THEN
+UPDATE `board` SET pawn_color=color WHERE X=1 AND Y=col_num;
+UPDATE `game_status` SET p_turn=if(color='R','Y','R');
+LEAVE do_move;
+END IF;
 
 END$$
 
@@ -128,7 +152,7 @@ CREATE TABLE `game_status` (
 --
 
 INSERT INTO `game_status` (`status`, `p_turn`, `result`, `last_change`) VALUES
-('not active', NULL, NULL, '2020-11-03 23:10:08');
+('not active', NULL, NULL, '2020-11-04 22:36:12');
 
 -- --------------------------------------------------------
 
@@ -148,8 +172,8 @@ CREATE TABLE `players` (
 --
 
 INSERT INTO `players` (`nickname`, `pawn_color`, `token`, `last_change`) VALUES
-(NULL, 'R', NULL, '2020-11-03 23:10:08'),
-(NULL, 'Y', NULL, '2020-11-03 23:10:08');
+(NULL, 'R', NULL, '2020-11-04 22:36:12'),
+(NULL, 'Y', NULL, '2020-11-04 22:36:12');
 
 --
 -- Ευρετήρια για άχρηστους πίνακες
