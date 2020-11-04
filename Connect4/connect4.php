@@ -26,7 +26,10 @@ switch ($r = array_shift($request)) {
                 reset_board();
                 break;
             case 'move':
-                manage_board($method,$input);
+                manage_board($method, $input);
+                break;
+            case '':
+                manage_board($method, $input);
                 break;
         }
         break;
@@ -44,10 +47,12 @@ function manage_player($method, $input)
     handle_player($method, $input);
 }
 
-function manage_board($method,$input)
+function manage_board($method, $input)
 {
-    if($method=='PUT'){
+    if ($method == 'PUT') {
         do_move($input);
     }
-    
+    if ($method == 'GET') {
+        show_board();
+    }
 }

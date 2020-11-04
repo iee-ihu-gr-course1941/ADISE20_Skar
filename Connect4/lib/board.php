@@ -1,5 +1,11 @@
 <?php
 
+
+function show_board(){
+	header('Content-type: application/json');
+	print json_encode(read_board(), JSON_PRETTY_PRINT);
+}
+
 function read_board() {
 	global $mysqli;
 	$sql = 'select * from board';

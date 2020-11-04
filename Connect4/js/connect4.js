@@ -1,7 +1,5 @@
 var me = { token: null, pawn_color: null };
 var game_status = {};
-var board = {};
-var last_update = new Date().getTime();
 var timer = null;
 
 
@@ -30,6 +28,31 @@ function draw_the_board() {
     board += '</table>'
 
     $('#board').html(board);
+}
+
+function fill_board() {
+    $.ajax({
+        url: "connect4.php/board/",
+        method: 'GET',
+        dataType: 'json',
+        headers: { "X-Token": me.token },
+        success: fill_board_data
+    });
+}
+
+function fill_board_data(data) {
+    for (var i = 0; i < data.lenght; i++) {
+        var item = data[i];
+        var id = '#square_' + item.x + '_' + item.y;
+        if (item.pawn_color == 'R') {
+            $(id).css('background-color', 'red');
+        }
+        if (item.pawn_color == 'Y') {
+            $(id).css('background-color', 'yellow');
+        }
+
+    }
+
 }
 
 
@@ -82,11 +105,11 @@ function update_game_status() {
 }
 
 function update_status(data) {
-    var old_status = game_status;
     game_status = data[0];
     update_player_info();
-    clearTimeout(timer);
+    fill_board();
     if (game_status.p_turn == me.pawn_color && me.pawn_color != null) {
+
         $('#gamepad').show(2000);
         timer = setTimeout(function() { update_game_status(); }, 10000);
     } else {
@@ -136,6 +159,9 @@ function do_move() {
 
 }
 
-function result_move() {
+function result_move(data) {
+    update_game_status();
+    fill_board();
+
 
 }
