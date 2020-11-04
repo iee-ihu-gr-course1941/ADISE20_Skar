@@ -41,7 +41,7 @@ function fill_board() {
 }
 
 function fill_board_data(data) {
-    for (var i = 0; i < data.lenght; i++) {
+    for (var i = 0; i < data.length; i++) {
         var item = data[i];
         var id = '#square_' + item.x + '_' + item.y;
         if (item.pawn_color == 'R') {
@@ -107,9 +107,10 @@ function update_game_status() {
 function update_status(data) {
     game_status = data[0];
     update_player_info();
-    fill_board();
+
     if (game_status.p_turn == me.pawn_color && me.pawn_color != null) {
 
+        fill_board();
         $('#gamepad').show(2000);
         timer = setTimeout(function() { update_game_status(); }, 10000);
     } else {
