@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Φιλοξενητής: 127.0.0.1
--- Χρόνος δημιουργίας: 04 Νοε 2020 στις 23:36:45
+-- Χρόνος δημιουργίας: 06 Νοε 2020 στις 21:56:26
 -- Έκδοση διακομιστή: 10.4.11-MariaDB
 -- Έκδοση PHP: 7.4.3
 
@@ -27,7 +27,7 @@ DELIMITER $$
 -- Διαδικασίες
 --
 CREATE DEFINER=`root`@`localhost` PROCEDURE `clear_game` ()  BEGIN
-		UPDATE `board` SET pawn_color=null;
+		UPDATE `board` SET `pawn_color`=null;
 		update `players` set `nickname`=null, `token`=null;
 		update `game_status` set `status`='not active', 				`p_turn`=null, `result`=null;
         END$$
@@ -152,7 +152,7 @@ CREATE TABLE `game_status` (
 --
 
 INSERT INTO `game_status` (`status`, `p_turn`, `result`, `last_change`) VALUES
-('not active', NULL, NULL, '2020-11-04 22:36:12');
+('not active', NULL, NULL, '2020-11-06 20:55:59');
 
 -- --------------------------------------------------------
 
@@ -172,8 +172,8 @@ CREATE TABLE `players` (
 --
 
 INSERT INTO `players` (`nickname`, `pawn_color`, `token`, `last_change`) VALUES
-(NULL, 'R', NULL, '2020-11-04 22:36:12'),
-(NULL, 'Y', NULL, '2020-11-04 22:36:12');
+(NULL, 'R', NULL, '2020-11-06 20:55:59'),
+(NULL, 'Y', NULL, '2020-11-06 20:48:44');
 
 --
 -- Ευρετήρια για άχρηστους πίνακες
