@@ -1,4 +1,4 @@
-var me = { token: null, pawn_color: null };
+var me = { nickname: null, token: null, pawn_color: null };
 var game_status = {};
 var timer = null;
 
@@ -86,7 +86,7 @@ function login_success(data) {
 
 
 function update_player_info() {
-    $('#p1').html("Nickname: " + me.nickname + "<br> Χρώμα: " + me.pawn_color + "<br> Κατάσταση παιχνιδιού: " + game_status.status + "<br> Σειρά του παίκτη με χρώμα: " + game_status.p_turn);
+    $('#p1').html("Nickname: " + me.nickname + "<br> Χρώμα: " + me.pawn_color + "<br> Κατάσταση παιχνιδιού: " + game_status.status + "<br> Σειρά του παίκτη με χρώμα: " + game_status.p_turn + "<br> Νικητής ο παίκτης με χρώμα: " + game_status.result);
 }
 
 
@@ -106,16 +106,24 @@ function update_game_status() {
 
 function update_status(data) {
     game_status = data[0];
+
+    fill_board();
     update_player_info();
 
-    if (game_status.p_turn == me.pawn_color && me.pawn_color != null) {
-
-        fill_board();
-        $('#gamepad').show(2000);
-        timer = setTimeout(function() { update_game_status(); }, 10000);
-    } else {
+    if (game_status.status == 'aborted') {
         $('#gamepad').hide(2000);
         timer = setTimeout(function() { update_game_status(); }, 4000);
+    } else if (game_status.status == 'ended') {
+        $('#gamepad').hide(2000);
+        timer = setTimeout(function() { update_game_status(); }, 2000);
+    } else {
+        if (game_status.p_turn == me.pawn_color && me.pawn_color != null) {
+            $('#gamepad').show(2000);
+            timer = setTimeout(function() { update_game_status(); }, 10000);
+        } else {
+            $('#gamepad').hide(2000);
+            timer = setTimeout(function() { update_game_status(); }, 4000);
+        }
     }
 
 }
@@ -133,7 +141,8 @@ function reset_game() {
     $('#game_initializer').show(2000);
     $('#nickname_input').val("");
     $('#p1').empty();
-    me = {};
+    me = { nickname: null, token: null, pawn_color: null };
+    update_game_status();
 }
 
 
