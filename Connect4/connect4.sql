@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Φιλοξενητής: 127.0.0.1
--- Χρόνος δημιουργίας: 06 Νοε 2020 στις 21:56:26
+-- Χρόνος δημιουργίας: 07 Νοε 2020 στις 01:39:07
 -- Έκδοση διακομιστή: 10.4.11-MariaDB
 -- Έκδοση PHP: 7.4.3
 
@@ -152,7 +152,7 @@ CREATE TABLE `game_status` (
 --
 
 INSERT INTO `game_status` (`status`, `p_turn`, `result`, `last_change`) VALUES
-('not active', NULL, NULL, '2020-11-06 20:55:59');
+('not active', NULL, NULL, '2020-11-07 00:38:30');
 
 -- --------------------------------------------------------
 
@@ -172,8 +172,8 @@ CREATE TABLE `players` (
 --
 
 INSERT INTO `players` (`nickname`, `pawn_color`, `token`, `last_change`) VALUES
-(NULL, 'R', NULL, '2020-11-06 20:55:59'),
-(NULL, 'Y', NULL, '2020-11-06 20:48:44');
+(NULL, 'R', NULL, '2020-11-07 00:38:30'),
+(NULL, 'Y', NULL, '2020-11-07 00:38:30');
 
 --
 -- Ευρετήρια για άχρηστους πίνακες
