@@ -18,7 +18,7 @@ function show_players()
 function show_player($pawn_color)
 {
     global $mysqli;
-    $sql = 'select nickname,pawn_color from players where pawn_color=?';
+    $sql = 'select nickname,pawn_color,token from players where pawn_color=?';
     $st = $mysqli->prepare($sql);
     $st->bind_param('s', $pawn_color);
     $st->execute();
