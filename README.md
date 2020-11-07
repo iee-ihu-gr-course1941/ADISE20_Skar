@@ -20,3 +20,15 @@ Table of Contents
          * [Board](#board-1)
          * [Players](#players)
          * [Game_status](#game_status)
+
+
+
+# Εγκατάσταση
+
+## Απαιτήσεις
+
+* Apache2
+* Mysql Server
+* php
+
+## Οδηγίες Εγκατάστασης
