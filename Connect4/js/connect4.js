@@ -88,7 +88,7 @@ function login_success(data) {
 
 //stoixeia tou paikth kai tou paixnidiou
 function update_player_info() {
-    $('#p1').html("Nickname: " + me.nickname + "<br> Χρώμα: " + me.pawn_color + "<br> Κατάσταση παιχνιδιού: " + game_status.status + "<br> Game info " + "<br> Σειρά του παίκτη με χρώμα: " + game_status.p_turn + "<br> Νικητής ο παίκτης με χρώμα: " + game_status.result);
+    $('#p1').html("Nickname: " + me.nickname + "<br> Χρώμα: " + me.pawn_color + "<br>" + "Token παίκτη: " + me.token + "<br>" + "<br> Game info " + "<br>" + "<br> Κατάσταση παιχνιδιού: " + game_status.status + "<br> Σειρά του παίκτη με χρώμα: " + game_status.p_turn + "<br> Νικητής ο παίκτης με χρώμα: " + game_status.result);
 }
 
 

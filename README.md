@@ -88,3 +88,8 @@ POST /board/reset/
 Επιστρέφει το [Board](#Board).
 
 #### Εισαγωγή χρώματος στο Board
+
+```
+PUT /board/move/
+```
+
