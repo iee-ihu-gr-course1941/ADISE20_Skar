@@ -1,4 +1,5 @@
 <?php
+//emfanisi katastashs paixnidiou
 function show_status()
 {
 
@@ -14,6 +15,7 @@ function show_status()
     print json_encode($res->fetch_all(MYSQLI_ASSOC), JSON_PRETTY_PRINT);
 }
 
+//elegxos gia egatalipsi paixnidiou
 function check_abort()
 {
     global $mysqli;
@@ -23,6 +25,7 @@ function check_abort()
     $r = $st->execute();
 }
 
+//epistrofi tou status
 function read_status()
 {
 
@@ -35,6 +38,7 @@ function read_status()
     return ($game_status);
 }
 
+//update tou status
 function update_status()
 {
     global $mysqli;

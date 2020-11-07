@@ -105,17 +105,19 @@ function check_winner()
         $k = 6;
         for ($m = 7; $m >= 4; $m--) {
             if ($m == 7) {
+                $p = 1;
                 $n = 2;
-            } else {
+            } elseif ($m == 6) {
                 $n = 1;
-            }
-            if ($m == 7 || $m == 6) {
                 $p = 1;
             } elseif ($m == 5) {
                 $p = 2;
+                $n = 1;
             } elseif ($m == 4) {
                 $p = 3;
+                $n = 1;
             }
+
             while ($k >= $p && $m >= $n) {
                 if ($board[$k][$m]['pawn_color'] == 'R') {
                     $RedCount++;
@@ -201,6 +203,7 @@ function check_winner()
         }
     }
 
+    //elegxos gia to poios paikths kerdise kai enhmerwsh ths katastash tou paixnidiou
     if ($RedCount == 4) {
 
         $sql = "update game_status set status='ended', result='R' where p_turn is not null and status='started'";

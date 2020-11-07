@@ -1,5 +1,6 @@
 <?php
 
+//epistrofi twn paiktwn pou exoyn kanei eisodo
 function show_players()
 {
     global $mysqli;
@@ -13,6 +14,7 @@ function show_players()
     //print json_encode($res->fetch_all(MYSQLI_ASSOC), JSON_PRETTY_PRINT);
 }
 
+//epistrofi sygekrimena enos paikth analoga to xrwma
 function show_player($pawn_color)
 {
     global $mysqli;
@@ -25,6 +27,7 @@ function show_player($pawn_color)
     print json_encode($res->fetch_all(MYSQLI_ASSOC), JSON_PRETTY_PRINT);
 }
 
+//ekxwrhsh neou paikth
 function set_up_player($input)
 {
 
@@ -74,6 +77,7 @@ function set_up_player($input)
     header('Content-type: application/json');
     print json_encode($res4->fetch_all(MYSQLI_ASSOC), JSON_PRETTY_PRINT);
 }
+
 
 function handle_player($method, $input)
 {

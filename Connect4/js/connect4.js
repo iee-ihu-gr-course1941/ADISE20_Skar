@@ -2,7 +2,7 @@ var me = { nickname: null, token: null, pawn_color: null };
 var game_status = {};
 var timer = null;
 
-
+//arxikh function kai orismos klik listeners
 $(function() {
     draw_the_board();
 
@@ -15,7 +15,7 @@ $(function() {
 
 })
 
-
+//sxediasmos tou pinaka
 function draw_the_board() {
     var board = '<table id="connect4_board">'
     for (var i = 1; i <= 6; i++) {
@@ -30,6 +30,7 @@ function draw_the_board() {
     $('#board').html(board);
 }
 
+//apostolh request gia epistrofi tou pinaka
 function fill_board() {
     $.ajax({
         url: "connect4.php/board/",
@@ -39,7 +40,7 @@ function fill_board() {
         success: fill_board_data
     });
 }
-
+//gemisma tou pinaka symfwna me to analogo xrwma pou einai sthn bash
 function fill_board_data(data) {
     for (var i = 0; i < data.length; i++) {
         var item = data[i];
@@ -55,7 +56,7 @@ function fill_board_data(data) {
 
 }
 
-
+//elegxos ths eisodou kai klhsh tou ajax gia eisagwgh tou paikth
 function login_to_game() {
     if ($('#nickname_input').val() == '') {
         alert('Δώσε nickname πρώτα!');
@@ -76,6 +77,7 @@ function login_to_game() {
 
 }
 
+//ekxwrhsh stoixeiwn paikth kai hide tou pediou eisodou
 function login_success(data) {
     me = data[0]
     $('#game_initializer').hide(2000);
@@ -84,9 +86,9 @@ function login_success(data) {
 
 }
 
-
+//stoixeia tou paikth kai tou paixnidiou
 function update_player_info() {
-    $('#p1').html("Nickname: " + me.nickname + "<br> Χρώμα: " + me.pawn_color + "<br> Κατάσταση παιχνιδιού: " + game_status.status + "<br> Σειρά του παίκτη με χρώμα: " + game_status.p_turn + "<br> Νικητής ο παίκτης με χρώμα: " + game_status.result);
+    $('#p1').html("Nickname: " + me.nickname + "<br> Χρώμα: " + me.pawn_color + "<br> Κατάσταση παιχνιδιού: " + game_status.status + "<br> Game info " + "<br> Σειρά του παίκτη με χρώμα: " + game_status.p_turn + "<br> Νικητής ο παίκτης με χρώμα: " + game_status.result);
 }
 
 
@@ -95,6 +97,7 @@ function login_error(data) {
     alert(x.errormesg);
 }
 
+//klhsh ajax gia update status
 function update_game_status() {
     clearTimeout(timer);
     $.ajax({
@@ -104,6 +107,7 @@ function update_game_status() {
     });
 }
 
+//elegxos tou status kai enhmerwsh tou front end analoga
 function update_status(data) {
     game_status = data[0];
 
@@ -128,6 +132,7 @@ function update_status(data) {
 
 }
 
+//ajax request gia thn reset
 function reset_game() {
 
     $.ajax({
@@ -146,7 +151,7 @@ function reset_game() {
 }
 
 
-
+//ajax request gia thn kinhsh
 function do_move() {
 
     var $move = $('#col_move').val();
@@ -169,6 +174,7 @@ function do_move() {
 
 }
 
+//enhmerwsh meta thn kinhsh
 function result_move(data) {
     update_game_status();
     fill_board();

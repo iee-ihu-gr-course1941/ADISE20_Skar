@@ -1,11 +1,12 @@
 <?php
 
-
+//epistrofh tou board json
 function show_board(){
 	header('Content-type: application/json');
 	print json_encode(read_board(), JSON_PRETTY_PRINT);
 }
 
+//diavasma tou board
 function read_board() {
 	global $mysqli;
 	$sql = 'select * from board';
@@ -15,13 +16,14 @@ function read_board() {
 	return($res->fetch_all(MYSQLI_ASSOC));
 }
 
+//klhsh ths procedure gia reset tou board kai olou tou paixnidiou
 function reset_board(){
 	global $mysqli;
 	$sql = 'CALL `clear_game`()';
 	$mysqli->query($sql);
 }
 
-
+//klhshs ths procedure gia ekxwrhsh kinhshs sto board symfwna me ton paikth kai thn sthlh 
 function do_move($input){
 	$col_num = $input['move'];
 	$pawn_color = $input['pawn_color'];
