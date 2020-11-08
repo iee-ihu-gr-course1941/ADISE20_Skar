@@ -24,6 +24,8 @@ Table of Contents
          * [Game_status](#game_status)
 
 
+# Page
+Μπορείτε να επισκεφθείτε την σελίδα `https://users.iee.ihu.gr/~it154616/Connect4/` για να παίξετε το παιχνίδι.
 
 # Εγκατάσταση
 
