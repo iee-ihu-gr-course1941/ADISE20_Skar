@@ -24,12 +24,17 @@ function check_winner()
 
         for ($i = 6; $i >= 1; $i--) {
             for ($j = 1; $j <= 7; $j++) {
-                if ($board[$i][$j]['pawn_color'] == 'R') {
-                    $RedCount++;
-                    $YellowCount = 0;
-                } elseif ($board[$i][$j]['pawn_color'] == 'Y') {
-                    $RedCount = 0;
-                    $YellowCount++;
+                if ($RedCount != 4 && $YellowCount != 4) {
+                    if ($board[$i][$j]['pawn_color'] == 'R') {
+                        $RedCount++;
+                        $YellowCount = 0;
+                    } elseif ($board[$i][$j]['pawn_color'] == 'Y') {
+                        $RedCount = 0;
+                        $YellowCount++;
+                    }elseif ($board[$i][$j]['pawn_color'] != 'Y' || $board[$i][$j]['pawn_color'] != 'R'){
+                        $RedCount = 0;
+                        $YellowCount = 0;
+                    }
                 }
             }
             if ($RedCount == 4 || $YellowCount == 4) {
