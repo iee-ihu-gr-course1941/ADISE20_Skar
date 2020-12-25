@@ -122,9 +122,11 @@ function update_status(data) {
         timer = setTimeout(function() { update_game_status(); }, 2000);
     } else {
         if (game_status.p_turn == me.pawn_color && me.pawn_color != null) {
+            $('#play_btn').prop('disabled', false);
             $('#gamepad').show(2000);
             timer = setTimeout(function() { update_game_status(); }, 10000);
         } else {
+            $('#play_btn').prop('disabled', true);
             $('#gamepad').hide(2000);
             timer = setTimeout(function() { update_game_status(); }, 4000);
         }
@@ -153,6 +155,7 @@ function reset_game() {
 
 //ajax request gia thn kinhsh
 function do_move() {
+    $('#play_btn').prop('disabled', true);
 
     var $move = $('#col_move').val();
 
