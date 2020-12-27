@@ -31,7 +31,7 @@ function check_winner()
                     } elseif ($board[$i][$j]['pawn_color'] == 'Y') {
                         $RedCount = 0;
                         $YellowCount++;
-                    }elseif ($board[$i][$j]['pawn_color'] != 'Y' || $board[$i][$j]['pawn_color'] != 'R'){
+                    } elseif ($board[$i][$j]['pawn_color'] != 'Y' || $board[$i][$j]['pawn_color'] != 'R') {
                         $RedCount = 0;
                         $YellowCount = 0;
                     }
@@ -57,7 +57,7 @@ function check_winner()
                     } elseif ($board[$j][$i]['pawn_color'] == 'Y') {
                         $RedCount = 0;
                         $YellowCount++;
-                    }elseif ($board[$j][$i]['pawn_color'] != 'Y' || $board[$i][$j]['pawn_color'] != 'R'){
+                    } elseif ($board[$j][$i]['pawn_color'] != 'Y' || $board[$i][$j]['pawn_color'] != 'R') {
                         $RedCount = 0;
                         $YellowCount = 0;
                     }
@@ -100,12 +100,12 @@ function check_winner()
             while ($x >= $p && $y <= $n) {
                 if ($RedCount != 4 && $YellowCount != 4) {
                     if ($board[$x][$y]['pawn_color'] == 'R') {
-                    $RedCount++;
-                    $YellowCount = 0;
-                } elseif ($board[$x][$y]['pawn_color'] == 'Y') {
-                    $YellowCount++;
-                    $RedCount = 0;
-                }elseif ($board[$x][$y]['pawn_color'] != 'Y' || $board[$x][$y]['pawn_color'] != 'R'){
+                        $RedCount++;
+                        $YellowCount = 0;
+                    } elseif ($board[$x][$y]['pawn_color'] == 'Y') {
+                        $YellowCount++;
+                        $RedCount = 0;
+                    } elseif ($board[$x][$y]['pawn_color'] != 'Y' || $board[$x][$y]['pawn_color'] != 'R') {
                         $RedCount = 0;
                         $YellowCount = 0;
                     }
@@ -152,12 +152,12 @@ function check_winner()
             while ($x >= $p && $y >= $n) {
                 if ($RedCount != 4 && $YellowCount != 4) {
                     if ($board[$x][$y]['pawn_color'] == 'R') {
-                    $RedCount++;
-                    $YellowCount = 0;
-                } elseif ($board[$x][$y]['pawn_color'] == 'Y') {
-                    $YellowCount++;
-                    $RedCount = 0;
-                }elseif ($board[$x][$y]['pawn_color'] != 'Y' || $board[$x][$y]['pawn_color'] != 'R'){
+                        $RedCount++;
+                        $YellowCount = 0;
+                    } elseif ($board[$x][$y]['pawn_color'] == 'Y') {
+                        $YellowCount++;
+                        $RedCount = 0;
+                    } elseif ($board[$x][$y]['pawn_color'] != 'Y' || $board[$x][$y]['pawn_color'] != 'R') {
                         $RedCount = 0;
                         $YellowCount = 0;
                     }
@@ -193,12 +193,12 @@ function check_winner()
             while ($x >= $p && $y <= $n) {
                 if ($RedCount != 4 && $YellowCount != 4) {
                     if ($board[$x][$y]['pawn_color'] == 'R') {
-                    $RedCount++;
-                    $YellowCount = 0;
-                } elseif ($board[$x][$y]['pawn_color'] == 'Y') {
-                    $YellowCount++;
-                    $RedCount = 0;
-                }elseif ($board[$x][$y]['pawn_color'] != 'Y' || $board[$x][$y]['pawn_color'] != 'R'){
+                        $RedCount++;
+                        $YellowCount = 0;
+                    } elseif ($board[$x][$y]['pawn_color'] == 'Y') {
+                        $YellowCount++;
+                        $RedCount = 0;
+                    } elseif ($board[$x][$y]['pawn_color'] != 'Y' || $board[$x][$y]['pawn_color'] != 'R') {
                         $RedCount = 0;
                         $YellowCount = 0;
                     }
@@ -234,12 +234,12 @@ function check_winner()
             while ($x >= $p && $y >= $n) {
                 if ($RedCount != 4 && $YellowCount != 4) {
                     if ($board[$x][$y]['pawn_color'] == 'R') {
-                    $RedCount++;
-                    $YellowCount = 0;
-                } elseif ($board[$x][$y]['pawn_color'] == 'Y') {
-                    $YellowCount++;
-                    $RedCount = 0;
-                }elseif ($board[$x][$y]['pawn_color'] != 'Y' || $board[$x][$y]['pawn_color'] != 'R'){
+                        $RedCount++;
+                        $YellowCount = 0;
+                    } elseif ($board[$x][$y]['pawn_color'] == 'Y') {
+                        $YellowCount++;
+                        $RedCount = 0;
+                    } elseif ($board[$x][$y]['pawn_color'] != 'Y' || $board[$x][$y]['pawn_color'] != 'R') {
                         $RedCount = 0;
                         $YellowCount = 0;
                     }
