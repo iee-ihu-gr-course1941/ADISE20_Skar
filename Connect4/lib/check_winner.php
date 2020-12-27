@@ -211,7 +211,7 @@ function check_winner()
     //elegxos gia to poios paikths kerdise kai enhmerwsh ths katastash tou paixnidiou
     if ($RedCount == 4) {
 
-        $sql = "update game_status set status='ended', result='R' where p_turn is not null and status='started'";
+        $sql = "update game_status set status='ended', result='R',p_turn=null where p_turn is not null and status='started'";
         $st = $mysqli->prepare($sql);
         $r = $st->execute();
     } elseif ($YellowCount == 4) {
